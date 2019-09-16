@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/lightYellow"
+    android:orientation="vertical"
     tools:context=".NoteActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -14,18 +14,20 @@
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="?attr/colorPrimary">
 
+            <include layout="@layout/note_toolbar_layout" />
 
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
-    <EditText
+    <com.android.notes.LinedEditText
         android:id="@+id/note_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="top"
         android:padding="5dp"
         android:textColor="@color/black"
         android:textSize="23sp" />
