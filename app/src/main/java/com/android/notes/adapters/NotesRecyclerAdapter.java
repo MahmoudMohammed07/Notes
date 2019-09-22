@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.android.notes.R;
 import com.android.notes.interfaces.OnNoteListener;
 import com.android.notes.models.Note;
+import com.android.notes.util.Utility;
 
 import java.util.ArrayList;
 
@@ -32,8 +33,17 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.timestamp.setText(mNotes.get(i).getTimestamp());
-        viewHolder.title.setText(mNotes.get(i).getTitle());
+        try {
+            String month = mNotes.get(i).getTimestamp().substring(0, 2);
+            month = Utility.getMonthFromNumber(month);
+            String year = mNotes.get(i).getTimestamp().substring(3);
+            String timestamp = month + " " + year;
+
+            viewHolder.timestamp.setText(timestamp);
+            viewHolder.title.setText(mNotes.get(i).getTitle());
+        } catch (NullPointerException e) {
+            e.getMessage();
+        }
     }
 
     @Override
